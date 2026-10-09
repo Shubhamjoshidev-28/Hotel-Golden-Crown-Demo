@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap">
+<link rel="stylesheet" href="global.css">
+<style>body{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,var(--navy),var(--navy2));padding:16px}
+.auth{width:min(420px,100%)}.auth .brand{text-align:center;font-size:1.7rem;margin-bottom:6px}.tabs{display:flex;gap:6px;margin:16px 0}.tabs button{flex:1}
+.auth p.hint{font-size:.8rem;color:var(--muted);text-align:center;margin-top:10px}.auth a{color:var(--navy)}</style></head><body>
+<div class="panel auth"><div class="brand" id="hotelName">Hotel</div><p class="hint">Sign in to manage the hotel</p>
+<div class="tabs"><button class="btn small" data-t="login">Sign in</button><button class="btn small ghost" data-t="register">Register owner</button></div>
+<form id="login" class="stack"><input id="lu" placeholder="Username" autocomplete="username" required><input id="lp" type="password" placeholder="Password" autocomplete="current-password" required><button class="btn block">Sign in</button></form>
+<form id="register" class="stack" hidden><input id="rn" placeholder="Full name" required><input id="rph" type="tel" placeholder="Phone"><input id="ru" placeholder="Username" required><input id="rp" type="password" placeholder="Password (min 6)" minlength="6" required><button class="btn block">Create owner account</button>
+<p class="hint">Only the first owner can register. Staff accounts are created by the owner.</p></form>
+<p class="hint"><a href="customerview.html">View rooms as a guest →</a></p></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="supabase.js"></script><script src="main.js"></script><script src="auth.js"></script></body></html>

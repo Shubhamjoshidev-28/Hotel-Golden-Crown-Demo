@@ -1,0 +1,13 @@
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:20px;display:grid;gap:12px;align-content:start;min-width:0}
+.card.wide{grid-column:1/-1}
+@media(min-width:1000px){.card.half{grid-column:span 1}.card.wide{grid-column:span 2}}
+.card-h{display:flex;justify-content:space-between;align-items:center}
+.kpis{display:flex;gap:28px;flex-wrap:wrap}.kpis b{display:block;font:700 1.9rem 'Playfair Display',serif;color:var(--navy)}
+.srow{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.lrow{display:flex;justify-content:space-between;padding:6px 8px;border-radius:8px;cursor:pointer}.lrow:hover{background:var(--bg)}
+.chart{width:100%;height:auto;color:var(--gold)}.chart circle{fill:var(--navy)}.chart rect{fill:var(--gold)}
+.chart text{font-size:9px;fill:var(--muted)}.chart .v{fill:var(--navy);font-weight:600}
+.daygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:5px}
+.daygrid div{background:var(--bg);border-radius:8px;text-align:center;padding:4px 0}.daygrid b{display:block;color:var(--navy)}
+.charts2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}

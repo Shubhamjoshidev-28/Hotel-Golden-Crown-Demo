@@ -1,0 +1,2 @@
+/* Staff-only overrides (shared styles live in global.css) */
+.user .btn{white-space:nowrap}

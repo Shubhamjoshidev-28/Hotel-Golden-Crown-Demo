@@ -1,0 +1,4 @@
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;text-align:center;padding:56px 20px}
+.hero h1{font-size:clamp(1.8rem,5vw,3rem);color:var(--gold)}.hero p{opacity:.85;margin-top:8px}
+.gallery .thumbs{grid-template-columns:repeat(auto-fill,minmax(64px,1fr))}
+.modal .stack{margin-top:14px}
