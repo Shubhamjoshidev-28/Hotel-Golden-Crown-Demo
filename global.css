@@ -68,8 +68,21 @@ fieldset legend{padding:0 6px;font-size:.8rem;color:var(--muted)}
 details{margin-top:8px}summary{cursor:pointer;color:var(--muted);font-size:.85rem}
 .bill{margin-top:14px;background:var(--bg);border-radius:12px;padding:12px 14px;display:grid;gap:4px}
 .bill div{display:flex;justify-content:space-between}.bill .grand{font-size:1.15rem;border-top:1px solid var(--line);padding-top:6px;margin-top:4px}
-.receipt table{width:100%;margin-top:10px;border-collapse:collapse}.receipt td{padding:6px 0;border-bottom:1px dashed var(--line)}.receipt td:last-child{text-align:right}
 /* responsive */
 @media(max-width:820px){.book-grid{grid-template-columns:1fr}.topbar{padding:10px 14px}.nav{order:3;flex:1 0 100%;overflow-x:auto}.wrap{padding:16px}.ex-add{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.enq-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
-@media print{body>*:not(.modal-bg){display:none!important}.modal-bg{position:static;background:none;display:block}.modal{box-shadow:none;width:100%}.no-print{display:none!important}}
+/* 58 mm thermal receipt: paper 58 mm, printable ~48 mm. Preview on screen is the same width. */
+.receipt{width:48mm;margin:0 auto;font:11px/1.35 'Courier New',monospace;color:#000;background:#fff}
+.receipt hr{border:0;border-top:1px dashed #000;margin:5px 0}
+.rc-h{font:700 14px 'Courier New',monospace;text-align:center;word-break:break-word}.rc-c{text-align:center}
+.rc-w{word-break:break-word}.rl{display:flex;justify-content:space-between;gap:6px}
+.rl span:first-child{min-width:0;word-break:break-word}.rl span:last-child{white-space:nowrap;text-align:right}
+.rl.tot{font-weight:700;font-size:12.5px}
+@page{size:58mm auto;margin:0}
+@media print{
+  html,body{margin:0;padding:0;background:#fff;width:58mm}
+  body>*:not(.modal-bg){display:none!important}
+  .modal-bg{position:static;display:block;padding:0;background:none;backdrop-filter:none;overflow:visible}
+  .modal{width:58mm;max-height:none;overflow:visible;padding:2mm 5mm 4mm;border-radius:0;box-shadow:none}
+  .receipt{width:48mm}.no-print{display:none!important}
+}

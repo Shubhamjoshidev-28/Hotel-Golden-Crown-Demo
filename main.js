@@ -184,12 +184,16 @@ async function renderBook() {
 }
 
 /* ---------- edit booking / extras / checkout ---------- */
-function receipt(o) {
-  modal(`<div class="receipt"><h2>${esc(HOTEL_NAME)}</h2><p class="muted">Receipt · Room ${esc(o.roomNo)}</p><p>${esc(o.names || 'Guest')}</p>
-    <p class="muted">${fmt(o.cin)} → ${fmt(o.cout)}</p><table>
-    <tr><td>Room rent${o.paid ? ' (paid)' : ''}</td><td>${money(o.rent)}</td></tr>
-    ${o.extras.map(x => `<tr><td>${esc(x.category || 'Extra')}${x.note ? ' · ' + esc(x.note) : ''}</td><td>${money(x.amount)}</td></tr>`).join('')}
-    <tr><td><b>Total due</b></td><td><b>${money(o.total)}</b></td></tr></table></div>
+function receipt(o) { // 58 mm thermal receipt (48 mm printable width), see .receipt in global.css
+  const line = (l, r, cls = '') => `<div class="rl ${cls}"><span>${l}</span><span>${r}</span></div>`;
+  modal(`<div class="receipt">
+    <div class="rc-h">${esc(HOTEL_NAME)}</div><div class="rc-c">RECEIPT</div><hr>
+    ${line('Room', esc(o.roomNo))}${o.names ? `<div class="rc-w">${esc(o.names)}</div>` : ''}
+    ${line('In', fmt(o.cin))}${line('Out', fmt(o.cout))}<hr>
+    ${line('Room rent' + (o.paid ? ' (paid)' : ''), money(o.rent))}
+    ${o.extras.map(x => line(esc(x.category || 'Extra') + (x.note ? ' - ' + esc(x.note) : ''), money(x.amount))).join('')}<hr>
+    ${line('TOTAL DUE', money(o.total), 'tot')}<hr>
+    <div class="rc-c">Thank you, visit again!</div></div>
     <div class="actions no-print"><button class="btn ghost" data-close>Close</button><button class="btn" onclick="window.print()">Print</button></div>`);
 }
 function editBooking(roomNo) { return safe(async () => {
